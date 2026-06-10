@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Juris Node</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body{background:#0f172a}
+.glass{background:rgba(30,41,59,.75);backdrop-filter:blur(12px)}
+</style>
+</head>
+<body class="text-white">
+
+<nav class="border-b border-slate-700">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+<h1 class="text-2xl font-bold text-blue-400">Juris Node</h1>
+<button class="bg-blue-600 px-5 py-2 rounded-lg">Get Started</button>
+</div>
+</nav>
+
+<section class="text-center py-20 px-6">
+<h1 class="text-5xl md:text-7xl font-bold mb-6">
+AI-Powered Contract & Legal Risk Analyzer
+</h1>
+<p class="text-slate-300 max-w-3xl mx-auto text-xl">
+Upload PDFs and images, analyze legal documents, detect risky clauses and view highlighted findings instantly.
+</p>
+</section>
+
+<section class="max-w-5xl mx-auto px-6 mb-16">
+<div class="glass rounded-3xl p-10 border border-slate-700 text-center">
+<div class="text-6xl mb-4">📄</div>
+<h2 class="text-3xl font-bold mb-3">Upload PDF or Image</h2>
+<p class="text-slate-400 mb-6">PDF, PNG, JPG, JPEG Supported</p>
+<input id="fileInput" type="file" class="mb-4">
+<p id="fileName" class="text-blue-300"></p>
+<button class="mt-4 bg-blue-600 hover:bg-blue-500 px-8 py-3 rounded-xl font-semibold">
+Analyze Document
+</button>
+</div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 mb-16">
+<div class="grid md:grid-cols-3 gap-6">
+<div class="glass p-6 rounded-2xl border border-slate-700">
+<h3 class="text-slate-400">Risk Score</h3>
+<p class="text-5xl font-bold text-red-400 mt-3">82%</p>
+</div>
+<div class="glass p-6 rounded-2xl border border-slate-700">
+<h3 class="text-slate-400">High Risk Clauses</h3>
+<p class="text-5xl font-bold text-yellow-400 mt-3">5</p>
+</div>
+<div class="glass p-6 rounded-2xl border border-slate-700">
+<h3 class="text-slate-400">Compliance Status</h3>
+<p class="text-5xl font-bold text-green-400 mt-3">PASS</p>
+</div>
+</div>
+</section>
+
+<section class="max-w-7xl mx-auto px-6 mb-16">
+<h2 class="text-4xl font-bold text-center mb-10">Document Analysis</h2>
+<div class="grid lg:grid-cols-2 gap-8">
+
+<div class="glass p-6 rounded-2xl border border-slate-700">
+<h3 class="text-xl font-bold mb-4">Highlighted Document</h3>
+<div class="bg-white text-black rounded-xl p-6 h-96 overflow-auto">
+<p>
+This agreement contains
+<mark style="background:yellow">payment obligations</mark>,
+<mark style="background:#ff9f9f">liability clauses</mark>
+and
+<mark style="background:#9dff9d">compliance provisions</mark>
+that were identified by the AI engine.
+</p>
+</div>
+</div>
+
+<div class="glass p-6 rounded-2xl border border-slate-700">
+<h3 class="text-xl font-bold mb-4">AI Findings</h3>
+<div class="space-y-4">
+<div class="border border-red-500 bg-red-500/10 p-4 rounded-xl">
+High Risk Clause Detected
+</div>
+<div class="border border-yellow-500 bg-yellow-500/10 p-4 rounded-xl">
+Payment Clause Needs Review
+</div>
+<div class="border border-green-500 bg-green-500/10 p-4 rounded-xl">
+Governing Law Clause Found
+</div>
+</div>
+
+<h3 class="text-xl font-bold mt-8 mb-3">JSON Output</h3>
+<pre class="bg-slate-900 p-4 rounded-xl text-sm overflow-auto">
+{
+  "risk_score":82,
+  "high_risk":["Liability Clause"],
+  "medium_risk":["Payment Clause"],
+  "status":"PASS"
+}
+</pre>
+</div>
+
+</div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 mb-20">
+<h2 class="text-4xl font-bold text-center mb-10">Features</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="glass p-6 rounded-xl">PDF Upload</div>
+<div class="glass p-6 rounded-xl">Image Upload</div>
+<div class="glass p-6 rounded-xl">OCR Extraction</div>
+<div class="glass p-6 rounded-xl">Gemini AI Analysis</div>
+<div class="glass p-6 rounded-xl">Clause Highlighting</div>
+<div class="glass p-6 rounded-xl">Risk Assessment</div>
+</div>
+</section>
+
+<footer class="border-t border-slate-700 py-8 text-center text-slate-400">
+Juris Node © 2026
+</footer>
+
+<script>
+document.getElementById('fileInput').addEventListener('change',function(){
+ if(this.files.length){
+  document.getElementById('fileName').innerText='Selected: '+this.files[0].name;
+ }
+});
+</script>
+
+</body>
+</html>

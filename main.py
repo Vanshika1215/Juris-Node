@@ -9,14 +9,12 @@ from google.api_core import exceptions
 from dotenv import load_dotenv
 import fitz  # PyMuPDF
 
-# 1. Environment and Configurations Setup
 load_dotenv()
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY", "").strip('"\''))
 
-# 2. Initialize Core FastAPI App Engine Instance
+
 app = FastAPI(title="Juris Node Engine API")
 
-# 3. Apply CORS Middleware Layer (Crucial for Frontend Handshaking)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -54,7 +52,7 @@ async def run_gemini_analysis(text_content: str) -> dict:
         "required": ["overall_safety_score", "executive_summary", "recommendations", "clauses"]
     }
 
-    # Exponential Backoff for Quota Limits
+    
     retries = 3
     delay = 10 
     
@@ -76,7 +74,6 @@ async def run_gemini_analysis(text_content: str) -> dict:
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
 
-# 5. Routing Definitions (Endpoints mapped *after* app initialization)
 
 @app.get("/history")
 async def get_history_index():
@@ -104,10 +101,10 @@ async def analyze_uploaded_file(file: UploadFile = File(...)):
         raise HTTPException(status_code=400, detail="Validation error: Target asset file format must be a PDF.")
         
     try:
-        # Read the uploaded PDF file stream into memory bytes
+        
         pdf_bytes = await file.read()
         
-        # Open the document using PyMuPDF (fitz)
+      
         doc = fitz.open(stream=pdf_bytes, filetype="pdf")
         extracted_text = ""
         
@@ -122,10 +119,10 @@ async def analyze_uploaded_file(file: UploadFile = File(...)):
                 detail="The uploaded PDF contains no digital text layers. Please use a text-selectable document."
             )
             
-        # Route text into Gemini structure compilation engine
+        
         analysis_result = await run_gemini_analysis(extracted_text)
         
-        # Append filename so frontend can display it in the header
+        
         analysis_result["contract_name"] = file.filename
         return analysis_result
 

@@ -3,16 +3,14 @@ from sqlalchemy import create_engine, text
 from supabase import create_client, Client
 import config 
 
-# REPLACE 'YOUR_PROJECT_ID' with the actual ID from your Supabase Dashboard
-# database.py
+
 from sqlalchemy import create_engine
 import json
 
-# Replace 'YOUR_PROJECT_ID' with your actual Supabase Project ID found in your dashboard
-# Format: postgres.YOUR_PROJECT_ID
+
 db_url = "postgresql+pg8000://postgres.knytvfmokibiadtukzzw:vanshika1215@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
 
-# Use connect_args for SSL to avoid 'unexpected keyword argument' errors
+
 engine = create_engine(
     db_url,
     connect_args={"ssl_context": True},
@@ -21,11 +19,11 @@ engine = create_engine(
 
 engine = create_engine(
     db_url,
-    connect_args={"ssl_context": True}, # Safely handles SSL without keyword errors
+    connect_args={"ssl_context": True}, 
     echo=False
 )
 
-# Initialize engine with 'connect_args' instead
+
 engine = create_engine(
     db_url,
     connect_args={"ssl_context": True}, # Correct way to enable SSL

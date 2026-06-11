@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ⚖️ Juris Node
 
 AI-powered legal contract analysis platform that helps users upload contracts, detect risky clauses, generate summaries, and download professional PDF reports.
@@ -71,3 +72,7 @@ Download full AI-generated legal analysis reports including:
 This platform provides AI-generated legal analysis for educational and productivity purposes only.
 
 It is NOT legal advice.
+=======
+# Juris-Node
+.
+>>>>>>> aafb4d3 (added backend and updates)
